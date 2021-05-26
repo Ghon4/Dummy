@@ -1,0 +1,25 @@
+/*
+we can parse Json in flutter by using http package, dio or chopper .. Here is a sample of dio
+*/
+
+static Dio dio;
+
+  static init() {
+    dio = Dio(
+      BaseOptions(
+        baseUrl: 'www.example.com/api',
+        receiveDataWhenStatusError: true,
+      ),
+    );
+
+ static Future<Response> getData({
+    @required String url,
+    Map<String, dynamic> query,
+  }) async {
+    dio.options.headers = {};
+
+    return await dio.get(
+      url,
+      queryParameters: query,
+    );
+  }
